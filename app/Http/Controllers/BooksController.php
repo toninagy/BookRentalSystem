@@ -2,22 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Book;
 
 class BooksController extends Controller
 {
     public function index()
     {
-    //   $books = Project::all();
-    //   return view('projects.index', [
-    //     'projects' => $projects,
-    //   ]);
+        $books = Book::all();
+        return view('books.index', [
+            'books' => $books,
+          ]);
     }
 
-    // public function show(Project $project)
-    // {
-    //     return view('projects/detail', [
-    //         'project' => $project
-    //     ]);
-    // }
+    public function show(Book $book)
+    {
+        return view('books.detail', [
+            'book' => $book
+        ]);
+    }
+
+    public function edit(Book $book)
+    {
+        return view('books.edit', [
+            'book' => $book
+        ]);
+    }
+
+    public function details(Book $book) {
+        return view('books.detail', [
+            'book' => $book
+        ]);
+    }
 }

@@ -20,4 +20,12 @@ class Book extends Model
         'isbn',
         'in_stock'
     ];
+
+    public function borrows() {
+        return $this->hasMany(Borrow::class, 'book_id');
+      }
+
+      public function activeBorrows() {
+        return $this->getAllBorrows()->where('status', '=', 'ACCEPTED');
+      }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BooksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,9 @@ Route::get('/', function () {
 })->name('home');
 
 Route::resource('books', BooksController::class);
+
+Route::get('/books/{book}/details', [BooksController::class, 'details'])->name('books.details');
+
+Route::view('/about', 'about')->name('about');
+
+// Route::get('/projects/{project}/show', [ProjectController::class, 'show'] )->name('projects.show');

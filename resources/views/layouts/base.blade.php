@@ -18,8 +18,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" >Books</a>
-          <a class="nav-item nav-link" >New book</a>
+          <a class="nav-item nav-link" href="{{ route('books.index') }}" >Books</a>
+          <a class="nav-item nav-link" href="{{ route('books.index') }}" >Search book</a>
           <a class="nav-item nav-link" >About</a>
         </div>
       </div>
