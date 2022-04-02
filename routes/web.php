@@ -24,8 +24,6 @@ Route::get('/books/{book}/details', [BooksController::class, 'details'])->name('
 
 Route::view('/about', 'about')->name('about');
 
-// Route::get('/projects/{project}/show', [ProjectController::class, 'show'] )->name('projects.show');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

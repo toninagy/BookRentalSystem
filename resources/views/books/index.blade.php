@@ -11,6 +11,8 @@
         </div>
     </div>
 
+    <p>Filtered on selected genre: {{ Request::get('genre') }}</p>
+
     <form action="/search" method="POST" role="search">
         @csrf
         <div class="input-group mb-3">

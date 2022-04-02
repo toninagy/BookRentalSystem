@@ -21,6 +21,10 @@ class Book extends Model
         'in_stock'
     ];
 
+    public function genres() {
+        return $this->hasMany(Genre::class, 'id');
+    }
+
     public function borrows() {
         return $this->hasMany(Borrow::class, 'book_id');
       }
