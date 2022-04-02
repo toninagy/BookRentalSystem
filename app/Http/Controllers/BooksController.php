@@ -36,7 +36,7 @@ class BooksController extends Controller
     }
 
     public function search(){
-        $query = Request::input('q');
+        $query = Request::input('query');
         $book = Book::where('title','LIKE','%'.$query.'%')->orWhere('authors','LIKE','%'.$query.'%')->get();
         if(count($book) > 0)
             return view('books/list')->withDetails($book)->withQuery($query);

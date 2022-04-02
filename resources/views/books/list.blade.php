@@ -3,25 +3,29 @@
 @section('content')
 <div class="container">
     @if(isset($details))
-        <p> The Search results for your query <b> {{ $query }} </b> are :</p>
-    <h2>Book details</h2>
+        <p> Search results for "<b> {{ $query }} </b>" :</p>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Email</th>
+                <th>Title</th>
+                <th>Author(s)</th>
+                <th>Pages</th>
+                <th>In stock</th>
             </tr>
         </thead>
         <tbody>
             @foreach($details as $book)
             <tr>
-              <td>Title: {{ $book->title }}</td>
-              <td>Author(s): {{ $book->authors }}</td>
-              <td>Description: {{ $book->description }}</td>
-              <td>Pages: {{ $book->pages }}</td>
-              <td>Language code: {{ $book->language_code }}</td>
-              <td>ISBN: {{ $book->isbn }}</td>
-              <td>In stock: {{ $book->in_stock }}</td>
+              <td>{{ $book->title }}</td>
+              <td>{{ $book->authors }}</td>
+              <td>{{ $book->pages }}</td>
+              @if ($book->in_stock > 0)
+              <td style="color: green">Yes</td>
+              @else
+              <td style="color: red">No</td>
+              @endif
+              <td><a href="{{ route('books.details', $book['id']) }}" class="btn btn-primary" style="background-color: green">Book details</a>
+              </td>
             </tr>
             @endforeach
         </tbody>
