@@ -16,7 +16,7 @@
           <p class="d-flex justify-content-between align-items-center">
             <span>
                 <h2>Title: {{ $book->title }}</h2>
-                <h3>{{ $book->released_at }}</h3>
+                <h3>{{ substr($book->released_at, 0, 7) }}</h3>
                 <h4>Author(s): {{ $book->authors }}</h4>
             </span>
           </p>

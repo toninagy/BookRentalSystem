@@ -9,7 +9,8 @@
             <tr>
                 <th>Title</th>
                 <th>Author(s)</th>
-                <th>Pages</th>
+                <th>Release date</th>
+                <th>Description</th>
                 <th>In stock</th>
             </tr>
         </thead>
@@ -18,7 +19,8 @@
             <tr>
               <td>{{ $book->title }}</td>
               <td>{{ $book->authors }}</td>
-              <td>{{ $book->pages }}</td>
+              <td>{{ substr($book->released_at, 0, 7) }}</td>
+              <td>{{ $book->description }}</td>
               @if ($book->in_stock > 0)
               <td style="color: green">Yes</td>
               @else

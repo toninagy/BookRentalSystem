@@ -26,8 +26,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $book['authors'] }}</h5>
                 <p class="card-text">{{ $book['description'] }}</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                <a href="{{ route('books.details', $book['id']) }}" class="btn btn-primary">Open</a>
+                <a href="{{ route('books.details', $book['id']) }}" class="btn btn-primary">Book details</a>
                 <a href="{{ route('books.index', $book['id']) }}" class="btn btn-primary">Borrow</a>
             </div>
         </div>
