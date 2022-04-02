@@ -29,3 +29,5 @@ Route::view('/about', 'about')->name('about');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::any('/search', [BooksController::class, 'search'])->name('search');

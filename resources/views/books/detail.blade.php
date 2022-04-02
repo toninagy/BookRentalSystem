@@ -25,6 +25,8 @@
         <a href="#" class="list-group-item list-group-item-action" style="background-color: #ab7969">
           <p class="d-flex justify-content-between align-items-center">
             <span>
+              <p>Title: {{ $book->title }}</p>
+              <p>Author(s): {{ $book->authors }}</p>
               <p>Description: {{ $book->description }}</p>
               <p>Pages: {{ $book->pages }}</p>
               <p>Language code: {{ $book->language_code }}</p>
