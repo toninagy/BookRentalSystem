@@ -1,13 +1,16 @@
 @extends('layouts.base')
 
 @section('content')
-
+      @auth
+      @if (Auth::user()->is_librarian)
       <a href="{{ route('books.edit', $book->id) }}"  class="btn btn-primary">Edit book details</a>
       <form action="{{ route('books.destroy', $book->id) }}" method="POST" class="d-inline">
         @method('DELETE')
         @csrf
         <button type="submit" class="btn btn-danger">Delete book</button>
       </form>
+      @endif
+      @endauth
       <div class="list-group">
         <a href="#" class="list-group-item list-group-item-action" style="background-color: #4aa786">
           <p class="d-flex justify-content-between align-items-center">

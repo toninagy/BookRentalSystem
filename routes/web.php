@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,9 @@ Route::get('/', function () {
 Route::resource('books', BooksController::class);
 
 Route::get('/books/{book}/details', [BooksController::class, 'details'])->name('books.details');
+Route::get('/books/{book}/edit', [BooksController::class, 'edit'])->name('books.edit')->middleware('auth');
+Route::get('/books/create', [BooksController::class, 'create'])->name('books.create')->middleware('auth');
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::any('/search', [BooksController::class, 'search'])->name('search');

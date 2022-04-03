@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BookFormRequest;
 use App\Models\Book;
 use App\Models\Genre;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 
 class BooksController extends Controller
@@ -26,6 +27,9 @@ class BooksController extends Controller
 
     public function edit(Book $book)
     {
+        if(!Auth::user()->is_librarian) {
+            return view('index');
+        }
         $genres = Genre::all();
         return view('books.edit', [
             'book' => $book,
@@ -41,6 +45,9 @@ class BooksController extends Controller
 
     public function create(Book $book)
     {
+        if(!Auth::user()->is_librarian) {
+            return view('index');
+        }
         $genres = Genre::all();
         return view('books/create', [
             'book' => $book,

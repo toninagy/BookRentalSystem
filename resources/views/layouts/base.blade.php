@@ -19,7 +19,11 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="{{ route('books.index') }}" >Books</a>
+          @auth
+          @if (Auth::user()->is_librarian)
           <a class="nav-item nav-link" href="{{ route('books.create') }}" >Add new book</a>
+          @endif
+          @endauth
         </div>
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ms-auto">
