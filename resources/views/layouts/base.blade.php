@@ -19,7 +19,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="{{ route('books.index') }}" >Books</a>
-          <a class="nav-item nav-link" >About</a>
+          <a class="nav-item nav-link" href="{{ route('books.create') }}" >Add new book</a>
         </div>
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ms-auto">

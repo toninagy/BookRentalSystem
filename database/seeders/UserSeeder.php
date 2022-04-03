@@ -19,10 +19,20 @@ class UserSeeder extends Seeder
         DB::table('users')->truncate();
         DB::table('users')->insert([
             'name' => "Joe Goldberg",
-            'email' => "goldberg@yahoo.com",
+            'email' => "librarian@brs.com",
             'email_verified_at' => now(),
-            'password' => Hash::make('admin'),
+            'password' => Hash::make('password'),
             'is_librarian' => true,
+            'remember_token' => 'GUv5cc2r4I',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('users')->insert([
+            'name' => "John Smith",
+            'email' => "reader@brs.com",
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'is_librarian' => false,
             'remember_token' => 'GUv5cc2r4I',
             'created_at' => now(),
             'updated_at' => now()

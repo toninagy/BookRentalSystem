@@ -24,8 +24,14 @@ class BookFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'author' => 'nullable',
-            'title' => 'nullable',
+            'title' => 'required|max:255',
+            'authors' => 'required|max:255',
+            'released_at' => 'required|before:now',
+            'pages' => 'required|gte:1',
+            'isbn' => 'required|unique:books|regex:/^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/i',
+            'description' => 'nullable',
+            'genres' => 'nullable|array',
+            'in_stock' => 'required|gte:0'
         ];
     }
 }

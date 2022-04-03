@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookFormRequest;
 use App\Models\Book;
+use App\Models\Genre;
 use Illuminate\Support\Facades\Request;
 
 class BooksController extends Controller
@@ -33,6 +35,22 @@ class BooksController extends Controller
         return view('books.detail', [
             'book' => $book
         ]);
+    }
+
+    public function create(Book $book)
+    {
+        $genres = Genre::all();
+        return view('books/create', [
+            'book' => $book,
+            'genres' => $genres
+        ]);
+    }
+
+    public function store(BookFormRequest $request)
+    {
+        $validated_data = $request->validated();
+        Book::create($validated_data);
+        return redirect()->route('books.index');
     }
 
     public function search(){
