@@ -16,7 +16,7 @@ use App\Http\Controllers\BooksController;
 
 Route::get('/', function () {
     return view('index');
-})->name('home');
+})->name('index');
 
 Route::resource('books', BooksController::class);
 
