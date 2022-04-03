@@ -22,8 +22,53 @@
 </div>
 
 <div class="form-group">
+    <label for="authors">Authors</label>
+    <textarea name="authors" class="form-control @error('authors') is-invalid @enderror" id="authors">{{ old('authors', $book['authors'])}}</textarea>
+
+    @error('authors')
+    <div class="invalid-feedback">
+        {{ $message }}
+    </div>
+    @enderror
+</div>
+
+<div class="form-group">
+    <label for="released_at">Released at:</label>
+    <input type="date" name="released_at" class="form-control @error('released_at') is-invalid @enderror" id="released_at" value="{{ old('released_at', $book['released_at']) }}"></input>
+    <div class="input-group-addon"></div>
+    @error('released_at')
+    <div class="invalid-feedback">
+        {{ $message }}
+    </div>
+    @enderror
+</div>
+
+
+<div class="form-group">
+    <label for="pages">Pages</label>
+    <input type="number" name="pages" class="form-control @error('pages') is-invalid @enderror" id="pages" rows="3" value="{{ old('pages', $book['pages']) }}"></input>
+
+    @error('pages')
+    <div class="invalid-feedback">
+        {{ $message }}
+    </div>
+    @enderror
+</div>
+
+<div class="form-group">
+    <label for="isbn">ISBN</label>
+    <textarea name="isbn" class="form-control @error('isbn') is-invalid @enderror" id="isbn" rows="3">{{ old('isbn', $book['isbn'])}}</textarea>
+
+    @error('isbn')
+    <div class="invalid-feedback">
+        {{ $message }}
+    </div>
+    @enderror
+</div>
+
+<div class="form-group">
     <label for="description">Description</label>
-    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="3"></textarea>
+    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="3">{{ old('description', $book['description'])}}</textarea>
 
     @error('description')
     <div class="invalid-feedback">
@@ -32,17 +77,33 @@
     @enderror
 </div>
 
-<div class="form-group">
-    <label for="cover_image">Cover image URL</label>
-    <input name="image_url" type="text" class="form-control @error('image_url') is-invalid @enderror" id="image_url" placeholder="" value="{{ $book['cover_image'] }}">
+<div class="form-group d-flex flex-wrap">
+    @foreach ($genres as $genre)
+    <div class="custom-control custom-switch col-sm-2">
+        <input
+            type="checkbox"
+            name="genres[]"
+            id="genre-{{ $genre->id }}"
+            value="{{ $genre->id }}"
+            class="custom-control-input"
+            @if(request()->ac) checked @endif
+        >
+        <label class="custom-control-label" for="genre-{{ $genre->id }}">{{ $genre->name }}</label>
+      </div>
+    @endforeach
+</div>
 
-    @error('image_url')
+<div class="form-group">
+    <label for="in_stock">In stock</label>
+    <input type="number" name="in_stock" type="text" class="form-control @error('in_stock') is-invalid @enderror" id="in_stock" placeholder="" value="{{ old('in_stock', $book['in_stock']) }}">
+
+    @error('in_stock')
     <div class="invalid-feedback">
         {{ $message }}
     </div>
     @enderror
 </div>
-
+<br>
 <div class="form-group">
     <button type="submit" class="btn btn-primary">Update book</button>
 </div>

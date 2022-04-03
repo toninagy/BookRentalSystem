@@ -26,8 +26,10 @@ class BooksController extends Controller
 
     public function edit(Book $book)
     {
+        $genres = Genre::all();
         return view('books.edit', [
-            'book' => $book
+            'book' => $book,
+            'genres' => $genres
         ]);
     }
 
@@ -46,6 +48,18 @@ class BooksController extends Controller
         ]);
     }
 
+    public function update(Book $book, BookFormRequest $request) {
+        $validated_data = $request->validated();
+        $book->update($validated_data);
+        return redirect()->route('books.show', $book->id);
+    }
+
+    public function destroy(Book $book)
+    {
+        $book->delete();
+        return redirect()->route('books.index');
+    }
+
     public function store(BookFormRequest $request)
     {
         $validated_data = $request->validated();
@@ -53,7 +67,8 @@ class BooksController extends Controller
         return redirect()->route('books.index');
     }
 
-    public function search(){
+    public function search()
+    {
         $query = Request::input('query');
         $book = Book::where('title','LIKE','%'.$query.'%')->orWhere('authors','LIKE','%'.$query.'%')->get();
         if(count($book) > 0)

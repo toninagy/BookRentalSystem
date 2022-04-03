@@ -2,15 +2,12 @@
 
 @section('content')
 
-      <img src="{{ $book->cover_image }}"/>
-
-      <a href="{{ route('books.edit', $book->id) }}"  class="btn btn-primary">Edit</a>
+      <a href="{{ route('books.edit', $book->id) }}"  class="btn btn-primary">Edit book details</a>
       <form action="{{ route('books.destroy', $book->id) }}" method="POST" class="d-inline">
         @method('DELETE')
         @csrf
-        <button type="submit" class="btn btn-danger">Delete</button>
+        <button type="submit" class="btn btn-danger">Delete book</button>
       </form>
-      <a href="new-track.html" class="btn btn-primary">Add new book</a>
       <div class="list-group">
         <a href="#" class="list-group-item list-group-item-action" style="background-color: #4aa786">
           <p class="d-flex justify-content-between align-items-center">
@@ -33,5 +30,6 @@
             </span>
           </p>
         </a>
+        <img src="{{ $book->cover_image }}"/>
       </div>
 @endsection
