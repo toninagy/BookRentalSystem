@@ -33,7 +33,7 @@
 
 <div class="form-group">
     <label for="released_at">Released at:</label>
-    <input type="date" name="released_at" class="form-control @error('released_at') is-invalid @enderror" id="released_at"></input>
+    <input type="date" name="released_at" class="form-control @error('released_at') is-invalid @enderror" id="released_at" value="{{ old('released_at') }}"></input>
     <div class="input-group-addon"></div>
     @error('released_at')
     <div class="invalid-feedback">
@@ -45,7 +45,7 @@
 
 <div class="form-group">
     <label for="pages">Pages</label>
-    <textarea name="pages" class="form-control @error('pages') is-invalid @enderror" id="pages" rows="3">{{ old('pages', '')}}</textarea>
+    <input type="number" name="pages" class="form-control @error('pages') is-invalid @enderror" id="pages" rows="3" value="{{ old('pages') }}"></input>
 
     @error('pages')
     <div class="invalid-feedback">
@@ -93,7 +93,7 @@
 
 <div class="form-group">
     <label for="in_stock">In stock</label>
-    <input name="in_stock" type="text" class="form-control @error('in_stock') is-invalid @enderror" id="in_stock" placeholder="" value="{{ old('in_stock', '') }}">
+    <input type="number" name="in_stock" type="text" class="form-control @error('in_stock') is-invalid @enderror" id="in_stock" placeholder="" value="{{ old('in_stock', '') }}">
 
     @error('in_stock')
     <div class="invalid-feedback">
@@ -103,6 +103,7 @@
 </div>
 
 <div class="form-group">
+    <br>
     <button type="submit" class="btn btn-primary">Add new book</button>
 </div>
 
