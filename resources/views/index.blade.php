@@ -3,26 +3,25 @@
 @section('content')
 <div class="row">
 
-    {{-- @foreach ($books as $book) --}}
-    <div class="col-sm-3 my-3">
+    <div class="card-body">
         <div class="card h-100">
-            {{-- <img src="{{ $book->image_url }}" class="card-img-top"> --}}
-            <div class="card-body">
-                {{-- <h5 class="card-title">{{ $book['name'] }}</h5>
-                <p class="card-text">{{ $book['description'] }}</p> --}}
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                {{-- <a href="{{ route('projects.show', $book['id']) }}" class="btn btn-primary">Open</a> --}}
-            </div>
+            <p class="font-weight-bold"> Number of users: {{ DB::table('users')->count()}}</p>
+            <p class="font-weight-bold"> Number of genres: {{ DB::table('genres')->count()}}</p>
+            <p class="font-weight-bold"> Number of books: {{ DB::table('books')->count()}}</p>
+            <p class="font-weight-bold"> Number of active book rentals: {{ DB::table('borrows')->count()}}</p>
         </div>
     </div>
-    {{-- @endforeach --}}
 
+    <div>TODO Genre list w links</div>
+    <p>Filtered on selected genre: {{ Request::get('genre') }}</p>
 
-    <div class="col-sm-3 my-3">
-        <div class="card h-100">
-            <a class="btn btn-secondary h-100 pt-5">Add a new book</a>
-        </div>
-    </div>
+    <form action="/search" method="POST" role="search">
+        @csrf
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="query" placeholder="Search book by title or author" aria-describedby="search-button">
+            <button class="btn btn-outline-secondary" type="submit" id="search-button">Submit</button>
+          </div>
+    </form>
 
 </div>
 @endsection

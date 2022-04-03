@@ -3,16 +3,6 @@
 @section('content')
 <div class="row">
 
-    <div class="card-body">
-        <div class="card h-100">
-            <p class="font-weight-bold"> Number of genres: {{ DB::table('genres')->count()}}</p>
-            <p class="font-weight-bold"> Number of books: {{ DB::table('books')->count()}}</p>
-            <p class="font-weight-bold"> Number of active book rentals: {{ DB::table('borrows')->count()}}</p>
-        </div>
-    </div>
-
-    <p>Filtered on selected genre: {{ Request::get('genre') }}</p>
-
     <form action="/search" method="POST" role="search">
         @csrf
         <div class="input-group mb-3">
