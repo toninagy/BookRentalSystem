@@ -30,4 +30,7 @@ Auth::routes();
 
 Route::any('/search', [BooksController::class, 'search'])->name('search');
 
+Route::resource('genres', GenreController::class);
+Route::get('/genres/{genre}/edit', [GenreController::class, 'edit'])->name('genres.edit')->middleware('auth');
 Route::any('/genres/list', [GenreController::class, 'list'])->name('genres.list')->middleware('auth');
+Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create')->middleware('auth');
