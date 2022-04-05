@@ -80,6 +80,6 @@ class BooksController extends Controller
         $book = Book::where('title','LIKE','%'.$query.'%')->orWhere('authors','LIKE','%'.$query.'%')->get();
         if(count($book) > 0)
             return view('books/list')->withDetails($book)->withQuery($query);
-        else return view ('index');
+        else return view ('index'); //TODO
     }
 }

@@ -22,6 +22,7 @@
           @auth
           @if (Auth::user()->is_librarian)
           <a class="nav-item nav-link" href="{{ route('books.create') }}" >Add new book</a>
+          <a class="nav-item nav-link" href="{{ route('genres.list') }}" >Genre list</a>
           @endif
           @endauth
         </div>

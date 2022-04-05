@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -28,3 +29,5 @@ Route::get('/books/create', [BooksController::class, 'create'])->name('books.cre
 Auth::routes();
 
 Route::any('/search', [BooksController::class, 'search'])->name('search');
+
+Route::any('/genres/list', [GenreController::class, 'list'])->name('genres.list')->middleware('auth');
