@@ -18,10 +18,10 @@ return new class extends Migration
             $table->unsignedBigInteger('reader_id');
             $table->unsignedBigInteger('book_id');
             $table->enum('status', ['PENDING', 'ACCEPTED', 'REJECTED', 'RETURNED']);
-            $table->dateTime('request_processed_at')->nullable();
+            $table->date('request_processed_at')->nullable();
             $table->unsignedBigInteger('request_managed_by')->nullable();
-            $table->dateTime('deadline')->nullable();
-            $table->dateTime('returned_at')->nullable();
+            $table->date('deadline')->nullable();
+            $table->date('returned_at')->nullable();
             $table->unsignedBigInteger('return_managed_by')->nullable();
             $table->timestamps();
 

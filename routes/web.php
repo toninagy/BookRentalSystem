@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,3 +36,7 @@ Route::resource('genres', GenreController::class);
 Route::get('/genres/{genre}/edit', [GenreController::class, 'edit'])->name('genres.edit')->middleware('auth');
 Route::any('/genres/list', [GenreController::class, 'list'])->name('genres.list')->middleware('auth');
 Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create')->middleware('auth');
+
+Route::resource('borrows', BorrowController::class);
+Route::any('/borrows/list', [BorrowController::class, 'list'])->name('borrows.list')->middleware('auth');
+Route::any('/borrows/{borrow}/edit', [BorrowController::class, 'edit'])->name('borrows.edit')->middleware('auth');

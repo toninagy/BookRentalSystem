@@ -26,6 +26,7 @@ class BorrowFormRequest extends FormRequest
         return [
             'reader_id' => 'required',
             'book_id' => 'required',
+            'deadline' => 'after:now',
             'status' => 'required'
         ];
     }
