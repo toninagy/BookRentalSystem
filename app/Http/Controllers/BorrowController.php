@@ -11,7 +11,10 @@ class BorrowController extends Controller
     public function show()
     {
         if(!Auth::user()->is_librarian) {
-            return view('index');
+            $borrows = Borrow::where('reader_id','LIKE','%'.Auth::user()->id.'%')->get();
+            return view('borrows/list', [
+                'borrows' => $borrows
+            ]);
         }
         $borrows = Borrow::all();
         return view('borrows/list', [

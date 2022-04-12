@@ -25,6 +25,9 @@
           <a class="nav-item nav-link" href="{{ route('genres.list') }}" >Genre list</a>
           <a class="nav-item nav-link" href="{{ route('borrows.list') }}" >Rental list</a>
           @endif
+          @if (!Auth::user()->is_librarian)
+          <a class="nav-item nav-link" href="{{ route('borrows.list') }}" >My rentals</a>
+          @endif
           @endauth
         </div>
         <!-- Right Side Of Navbar -->
