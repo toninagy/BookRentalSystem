@@ -34,8 +34,19 @@
             @auth
             @if (!Auth::user()->is_librarian)
             @if($book->in_stock > 0)
-            @if($is_borrowed == null || $is_borrowed->isEmpty())
+            @if($is_borrowed == null || $is_borrowed->isEmpty() || $is_borrowed[0]->status == 'RETURNED')
+            @if($is_borrowed != null && $is_borrowed->isNotEmpty() && $is_borrowed[0]->status == 'RETURNED')
+            <form action="/borrows/{{ $is_borrowed[0]->id }}" method="post">
+            @method('put')
+            <p style="background-color: #8bacdb">You have already borrowed this book! Click the below button to borrow it again!</p>
+            <input type="hidden" name="request_processed_at" value={{$is_borrowed[0]->request_processed_at}}>
+            <input type="hidden" name="request_managed_by" value={{$is_borrowed[0]->request_managed_by}}>
+            <input type="hidden" name="deadline" value={{$is_borrowed[0]->deadline}}>
+            <input type="hidden" name="returned_at" value={{$is_borrowed[0]->returned_at}}>
+            <input type="hidden" name="return_managed_by" value={{$is_borrowed[0]->return_managed_by}}>
+            @else
             <form action="/books/{{ $book['id'] }}/borrow" method="post">
+            @endif
             @csrf
             <input type="hidden" name="reader_id" value="{{Auth::user()->id}}">
             <input type="hidden" name="book_id" value="{{$book->id}}">
@@ -45,7 +56,11 @@
             </div>
             </form>
             @else
+            @if($is_borrowed[0]->status != 'REJECTED')
             <p style="background-color: #13c640">You borrowed this book! Status: {{ $is_borrowed[0]->status }}</p>
+            @else
+            <p style="background-color: #c66113">Unfortunately, your rental request has been rejected</p>
+            @endif
             @endif
             @endif
             @if ($book->in_stock == 0)

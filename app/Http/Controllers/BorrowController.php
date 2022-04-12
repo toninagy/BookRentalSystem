@@ -33,6 +33,9 @@ class BorrowController extends Controller
     {
         $validated_data = $request->validated();
         $borrow->update($validated_data);
+        if(!Auth::user()->is_librarian) {
+            return redirect()->route('books.details', $borrow->book_id);
+        }
         return redirect()->route('borrows.list');
     }
 }
