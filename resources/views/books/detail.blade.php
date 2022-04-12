@@ -31,6 +31,28 @@
               <p>ISBN: {{ $book->isbn }}</p>
               <p>In stock: {{ $book->in_stock }}</p>
             </span>
+            @auth
+            @if (!Auth::user()->is_librarian)
+            @if($book->in_stock > 0)
+            @if($is_borrowed == null || $is_borrowed->isEmpty())
+            <form action="/books/{{ $book['id'] }}/borrow" method="post">
+            @csrf
+            <input type="hidden" name="reader_id" value="{{Auth::user()->id}}">
+            <input type="hidden" name="book_id" value="{{$book->id}}">
+            <input type="hidden" name="status" value="PENDING">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Borrow this book!</button>
+            </div>
+            </form>
+            @else
+            <p style="background-color: #13c640">You borrowed this book! Status: {{ $is_borrowed[0]->status }}</p>
+            @endif
+            @endif
+            @if ($book->in_stock == 0)
+            <p style="background-color: #be1d1d">Unfortunately this book is out of stock :(</p>
+            @endif
+            @endif
+            @endauth
           </p>
         </a>
         <img src="{{ $book->cover_image }}"/>

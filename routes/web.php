@@ -25,6 +25,7 @@ Route::resource('books', BooksController::class);
 Route::get('/books/{book}/details', [BooksController::class, 'details'])->name('books.details');
 Route::get('/books/{book}/edit', [BooksController::class, 'edit'])->name('books.edit')->middleware('auth');
 Route::get('/books/create', [BooksController::class, 'create'])->name('books.create')->middleware('auth');
+Route::post('/books/{book}/borrow', [BooksController::class, 'borrow'])->name('books.borrow')->middleware('auth');
 
 Auth::routes();
 

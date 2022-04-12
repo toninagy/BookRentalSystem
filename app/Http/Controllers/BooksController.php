@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BookFormRequest;
+use App\Http\Requests\BorrowFormRequest;
 use App\Models\Book;
+use App\Models\Borrow;
 use App\Models\Genre;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
@@ -38,8 +40,15 @@ class BooksController extends Controller
     }
 
     public function details(Book $book) {
+        if(Auth::user()) {
+            $is_borrowed = Borrow::where('reader_id','LIKE','%'.Auth::user()->id.'%')->where('book_id','LIKE','%'.$book->id.'%')->get();
+        }
+        else {
+            $is_borrowed = null;
+        }
         return view('books.detail', [
-            'book' => $book
+            'book' => $book,
+            'is_borrowed' => $is_borrowed
         ]);
     }
 
@@ -72,6 +81,13 @@ class BooksController extends Controller
         $validated_data = $request->validated();
         Book::create($validated_data);
         return redirect()->route('books.index');
+    }
+
+    public function borrow(Book $book, BorrowFormRequest $request)
+    {
+        $validated_data = $request->validated();
+        Borrow::create($validated_data);
+        return redirect()->route('books.details', $book['id']);
     }
 
     public function search()

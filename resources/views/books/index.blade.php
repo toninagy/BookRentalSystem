@@ -19,11 +19,6 @@
                 <h5 class="card-title">{{ $book['authors'] }}</h5>
                 <p class="card-text">{{ $book['description'] }}</p>
                 <a href="{{ route('books.details', $book['id']) }}" class="btn btn-primary">Book details</a>
-                @auth
-                @if (!Auth::user()->is_librarian)
-                <a href="{{ route('books.index', $book['id']) }}" class="btn btn-primary">Borrow</a>
-                @endif
-                @endauth
             </div>
         </div>
     </div>
