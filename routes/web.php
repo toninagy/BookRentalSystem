@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\GenreController;
+use App\Models\Genre;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -18,7 +19,10 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $genres = Genre::all();
+    return view('index', [
+        'genres' => $genres
+    ]);
 })->name('index');
 
 Route::resource('books', BooksController::class);

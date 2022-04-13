@@ -16,9 +16,12 @@ class GenreFactory extends Factory
      */
     public function definition()
     {
+        $styles = ['primary', 'secondary', 'success', 'danger', 'warning', 'info',
+        'light', 'dark'];
+
         return [
             'name' => $this->faker->name(),
-            'style' => 'success'
+            'style' => $styles[array_rand($styles)]
         ];
     }
 }

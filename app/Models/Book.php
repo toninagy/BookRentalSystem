@@ -13,6 +13,7 @@ class Book extends Model
         'title',
         'authors',
         'description',
+        'genres',
         'released_at',
         'cover_image',
         'pages',

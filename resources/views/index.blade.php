@@ -8,12 +8,9 @@
             <p class="font-weight-bold"> Number of users: {{ DB::table('users')->count()}}</p>
             <p class="font-weight-bold"> Number of genres: {{ DB::table('genres')->count()}}</p>
             <p class="font-weight-bold"> Number of books: {{ DB::table('books')->count()}}</p>
-            <p class="font-weight-bold"> Number of active book rentals: {{ DB::table('borrows')->count()}}</p>
+            <p class="font-weight-bold"> Number of active book rentals: {{ DB::table('borrows')->where('status','=','ACCEPTED')->count()}}</p>
         </div>
     </div>
-
-    <div>TODO Genre list w links</div>
-    <p>Filtered on selected genre: {{ Request::get('genre') }}</p>
 
     <form action="/search" method="POST" role="search">
         @csrf
@@ -22,6 +19,26 @@
             <button class="btn btn-outline-secondary" type="submit" id="search-button">Submit</button>
           </div>
     </form>
+    {{-- @if(isset($details))
+    <p style="color:red">{{$details}}</p>
+    @endif
+
+    <table id="genreTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Filter books by genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($genres as $genre)
+                <tr>
+                <td>
+            <a href="{{ route('genres.filter') }}" class="btn btn-primary" style="background-color: green">{{$genre->name}}</a>
+                </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table> --}}
 
 </div>
 @endsection

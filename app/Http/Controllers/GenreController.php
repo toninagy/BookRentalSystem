@@ -5,9 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\GenreFormRequest;
 use App\Models\Genre;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Book;
+use Illuminate\Support\Facades\Request;
 
 class GenreController extends Controller
 {
+    public function filter()
+    {
+        // $query = Request::input('query');
+        // $book = Book::where('genre','=',$query)->get();
+        return view('genres/filter');
+    }
+
     public function show()
     {
         if(!Auth::user()->is_librarian) {

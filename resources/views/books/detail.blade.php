@@ -18,6 +18,7 @@
                 <h2>Title: {{ $book->title }}</h2>
                 <h3>{{ substr($book->released_at, 0, 10) }}</h3>
                 <h4>Author(s): {{ $book->authors }}</h4>
+                <h4>Genre(s): {{ $genre[0]->name }}</h4>
             </span>
           </p>
         </a>

@@ -22,8 +22,10 @@ class BooksController extends Controller
 
     public function show(Book $book)
     {
+        $genre = Genre::where('id','=',$book->genres)->get();
         return view('books.detail', [
-            'book' => $book
+            'book' => $book,
+            'genre' => $genre
         ]);
     }
 
@@ -40,6 +42,7 @@ class BooksController extends Controller
     }
 
     public function details(Book $book) {
+        $genre = Genre::where('id','=',$book->genres)->get();
         if(Auth::user()) {
             $is_borrowed = Borrow::where('reader_id','=',Auth::user()->id)->where('book_id','=',$book->id)->get();
         }
@@ -48,7 +51,8 @@ class BooksController extends Controller
         }
         return view('books.detail', [
             'book' => $book,
-            'is_borrowed' => $is_borrowed
+            'is_borrowed' => $is_borrowed,
+            'genre' => $genre
         ]);
     }
 
@@ -94,8 +98,9 @@ class BooksController extends Controller
     {
         $query = Request::input('query');
         $book = Book::where('title','LIKE','%'.$query.'%')->orWhere('authors','LIKE','%'.$query.'%')->get();
+        $no_results = "No results :(";
         if(count($book) > 0)
             return view('books/list')->withDetails($book)->withQuery($query);
-        else return view ('index'); //TODO
+        else return view ('index')->withDetails($no_results);
     }
 }
