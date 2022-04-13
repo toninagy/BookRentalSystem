@@ -41,7 +41,7 @@ class BooksController extends Controller
 
     public function details(Book $book) {
         if(Auth::user()) {
-            $is_borrowed = Borrow::where('reader_id','LIKE','%'.Auth::user()->id.'%')->where('book_id','LIKE','%'.$book->id.'%')->get();
+            $is_borrowed = Borrow::where('reader_id','=',Auth::user()->id)->where('book_id','=',$book->id)->get();
         }
         else {
             $is_borrowed = null;
