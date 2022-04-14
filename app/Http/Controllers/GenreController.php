@@ -6,14 +6,13 @@ use App\Http\Requests\GenreFormRequest;
 use App\Models\Genre;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Book;
-use Illuminate\Support\Facades\Request;
 
 class GenreController extends Controller
 {
-    public function filter()
+
+    public function filter(Genre $genre)
     {
-        $query = Request::input('query');
-        $books = Book::where('genre','=',$query)->get();
+        $books = Book::where('genres','=',$genre['id'])->get();
         return view('genres/filter', [
             'books' => $books
         ]);

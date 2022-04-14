@@ -33,7 +33,7 @@
             @foreach($genres as $genre)
                 <tr>
                 <td>
-            <a href="{{ route('genres.filter') }}" class="btn btn-primary" style="background-color: green">{{$genre->name}}</a>
+                    <a href="{{ route('genres.filter', $genre['id']) }}" class="btn btn-primary" style="background-color: green">{{$genre->name}}</a>
                 </td>
                 </tr>
             @endforeach

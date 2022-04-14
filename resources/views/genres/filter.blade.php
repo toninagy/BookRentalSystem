@@ -5,8 +5,10 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Genre name</th>
-                <th>Genre style</th>
+                <th>Book title</th>
+                <th>Authors</th>
+                <th>Release date</th>
+                <th>Description</th>
             </tr>
         </thead>
         <tbody>
@@ -14,6 +16,9 @@
             <tr>
               <td>{{ $book->title }}</td>
               <td>{{ $book->authors }}</td>
+              <td>{{ $book->released_at }}</td>
+              <td>{{ $book->description }}</td>
+              <td><a href="{{ route('books.details', $book['id']) }}" class="btn btn-primary" style="background-color: green">Book details</a>
             </tr>
             @endforeach
         </tbody>

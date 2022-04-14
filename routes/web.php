@@ -36,7 +36,7 @@ Auth::routes();
 
 Route::any('/search', [BooksController::class, 'search'])->name('search');
 
-Route::get('/genres/filter', [GenreController::class, 'filter'])->name('genres.filter');
+Route::get('/genres/{genre}/filter', [GenreController::class, 'filter'])->name('genres.filter');
 Route::resource('genres', GenreController::class);
 Route::get('/genres/{genre}/edit', [GenreController::class, 'edit'])->name('genres.edit')->middleware('auth');
 Route::any('/genres/list', [GenreController::class, 'list'])->name('genres.list')->middleware('auth');
