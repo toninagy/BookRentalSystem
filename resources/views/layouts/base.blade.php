@@ -33,6 +33,9 @@
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ms-auto">
         <!-- Authentication Links -->
+        @auth
+          <a class="nav-item nav-link" href="{{ route('profile') }}" >My profile</a>
+        @endauth
         @guest
             @if (Route::has('login'))
                 <li class="nav-item">

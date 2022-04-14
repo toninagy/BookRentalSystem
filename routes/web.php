@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\GenreController;
@@ -24,6 +25,8 @@ Route::get('/', function () {
         'genres' => $genres
     ]);
 })->name('index');
+
+Route::get('/profile', [Controller::class, 'profile'])->name('profile')->middleware('auth');
 
 Route::resource('books', BooksController::class);
 

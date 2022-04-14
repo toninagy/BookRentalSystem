@@ -101,6 +101,8 @@ class BooksController extends Controller
         $no_results = "No results :(";
         if(count($book) > 0)
             return view('books/list')->withDetails($book)->withQuery($query);
-        else return view ('index')->withDetails($no_results);
+        else return view ('index', [
+            'genres' => Genre::all()
+        ])->withDetails($no_results);
     }
 }
