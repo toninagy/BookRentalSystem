@@ -19,7 +19,7 @@
             <button class="btn btn-outline-secondary" type="submit" id="search-button">Submit</button>
           </div>
     </form>
-    {{-- @if(isset($details))
+    @if(isset($details))
     <p style="color:red">{{$details}}</p>
     @endif
 
@@ -38,7 +38,7 @@
                 </tr>
             @endforeach
         </tbody>
-    </table> --}}
+    </table>
 
 </div>
 @endsection

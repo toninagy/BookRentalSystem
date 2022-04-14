@@ -12,9 +12,11 @@ class GenreController extends Controller
 {
     public function filter()
     {
-        // $query = Request::input('query');
-        // $book = Book::where('genre','=',$query)->get();
-        return view('genres/filter');
+        $query = Request::input('query');
+        $books = Book::where('genre','=',$query)->get();
+        return view('genres/filter', [
+            'books' => $books
+        ]);
     }
 
     public function show()
