@@ -18,7 +18,9 @@
                 <h2>Title: {{ $book->title }}</h2>
                 <h3>{{ substr($book->released_at, 0, 10) }}</h3>
                 <h4>Author(s): {{ $book->authors }}</h4>
+                @if($genre->isNotEmpty())
                 <h4>Genre(s): {{ $genre[0]->name }}</h4>
+                @endif
             </span>
           </p>
         </a>

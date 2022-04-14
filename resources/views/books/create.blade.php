@@ -81,7 +81,7 @@
     <div class="custom-control custom-switch col-sm-2">
         <input
             type="checkbox"
-            name="genres[]"
+            name="genres"
             id="genre-{{ $genre->id }}"
             value="{{ $genre->id }}"
             class="custom-control-input"

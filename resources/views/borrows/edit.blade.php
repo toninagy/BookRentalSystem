@@ -3,7 +3,7 @@
 @section('content')
 
 <?php $now = Carbon\Carbon::now() ?>
-@if($borrow['deadline']<$now)
+@if($borrow['deadline'] != null && $borrow['deadline']<$now)
 <br>
 <h3 style="color:#ff0000">Rental is late! Returnal deadline: {{$borrow['deadline']}}</h3>
 @endif
