@@ -40,7 +40,7 @@ class BookFormRequest extends FormRequest
             //     ->ignore($this->genres)->ignore($this->in_stock)
             // ],
             'description' => 'nullable',
-            'genres' => 'nullable|array',
+            'genres' => 'required',
             'in_stock' => 'required|gte:0'
         ];
     }

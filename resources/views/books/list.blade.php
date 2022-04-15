@@ -19,7 +19,7 @@
             <tr>
               <td>{{ $book->title }}</td>
               <td>{{ $book->authors }}</td>
-              <td>{{ substr($book->released_at, 0, 7) }}</td>
+              <td>{{ substr($book->released_at, 0, 10) }}</td>
               <td>{{ $book->description }}</td>
               @if ($book->in_stock > 0)
               <td style="color: green">Yes</td>

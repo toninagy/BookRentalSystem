@@ -20,7 +20,7 @@
     </div>
     @enderror
 </div>
-
+<br>
 <div class="form-group">
     <label for="authors">Authors</label>
     <textarea name="authors" class="form-control @error('authors') is-invalid @enderror" id="authors">{{ old('authors', $book['authors'])}}</textarea>
@@ -31,7 +31,7 @@
     </div>
     @enderror
 </div>
-
+<br>
 <div class="form-group">
     <label for="released_at">Released at:</label>
     <input type="date" name="released_at" class="form-control @error('released_at') is-invalid @enderror" id="released_at" value="{{ old('released_at', $book['released_at']) }}"></input>
@@ -42,8 +42,7 @@
     </div>
     @enderror
 </div>
-
-
+<br>
 <div class="form-group">
     <label for="pages">Pages</label>
     <input type="number" name="pages" class="form-control @error('pages') is-invalid @enderror" id="pages" rows="3" value="{{ old('pages', $book['pages']) }}"></input>
@@ -54,7 +53,7 @@
     </div>
     @enderror
 </div>
-
+<br>
 <div class="form-group">
     <label for="isbn">ISBN</label>
     <textarea name="isbn" class="form-control @error('isbn') is-invalid @enderror" id="isbn" rows="3">{{ old('isbn', $book['isbn'])}}</textarea>
@@ -65,7 +64,7 @@
     </div>
     @enderror
 </div>
-
+<br>
 <div class="form-group">
     <label for="description">Description</label>
     <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="3">{{ old('description', $book['description'])}}</textarea>
@@ -76,23 +75,24 @@
     </div>
     @enderror
 </div>
-
+<p>Genre</p>
 <div class="form-group d-flex flex-wrap">
     @foreach ($genres as $genre)
     <div class="custom-control custom-switch col-sm-2">
         <input
-            type="checkbox"
+            type="radio"
             name="genres"
             id="genre-{{ $genre->id }}"
             value="{{ $genre->id }}"
             class="custom-control-input"
-            @if(request()->ac) checked @endif
+            @if($book['genres'] == $genre['id']) checked @endif
         >
-        <label class="custom-control-label" for="genre-{{ $genre->id }}">{{ $genre->name }}</label>
+        <label class="custom-control-label" for="genre-{{ $genre->id }}">{{ $genre->id }}</label>
       </div>
     @endforeach
-</div>
 
+</div>
+<br>
 <div class="form-group">
     <label for="in_stock">In stock</label>
     <input type="number" name="in_stock" type="text" class="form-control @error('in_stock') is-invalid @enderror" id="in_stock" placeholder="" value="{{ old('in_stock', $book['in_stock']) }}">

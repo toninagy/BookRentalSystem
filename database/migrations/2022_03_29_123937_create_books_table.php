@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 255);
             $table->string('authors', 255);
-            $table->unsignedBigInteger('genres')->nullable();
+            $table->unsignedBigInteger('genres');
             $table->string('description', 255)->nullable();
             $table->date('released_at', 255);
             $table->string('cover_image', 255)->nullable();

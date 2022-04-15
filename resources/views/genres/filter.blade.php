@@ -16,7 +16,7 @@
             <tr>
               <td>{{ $book->title }}</td>
               <td>{{ $book->authors }}</td>
-              <td>{{ $book->released_at }}</td>
+              <td>{{ substr($book->released_at, 0, 10) }}</td>
               <td>{{ $book->description }}</td>
               <td><a href="{{ route('books.details', $book['id']) }}" class="btn btn-primary" style="background-color: green">Book details</a>
             </tr>

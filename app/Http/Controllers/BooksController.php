@@ -70,6 +70,7 @@ class BooksController extends Controller
 
     public function update(Book $book, BookFormRequest $request) {
         $validated_data = $request->validated();
+        $validated_data['genres'] = $request->input('genres')[0];
         $book->update($validated_data);
         return redirect()->route('books.show', $book->id);
     }
@@ -83,6 +84,7 @@ class BooksController extends Controller
     public function store(BookFormRequest $request)
     {
         $validated_data = $request->validated();
+        $validated_data['genres'] = $request->input('genres')[0];
         Book::create($validated_data);
         return redirect()->route('books.index');
     }
