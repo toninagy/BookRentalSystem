@@ -18,9 +18,7 @@
                 <h2>Title: {{ $book->title }}</h2>
                 <h3>{{ substr($book->released_at, 0, 10) }}</h3>
                 <h4>Author(s): {{ $book->authors }}</h4>
-                @if($genre->isNotEmpty())
                 <h4>Genre(s): {{ $genre[0]->name }}</h4>
-                @endif
             </span>
           </p>
         </a>
@@ -33,6 +31,7 @@
               <p>Language code: {{ $book->language_code }}</p>
               <p>ISBN: {{ $book->isbn }}</p>
               <p>In stock: {{ $book->in_stock }}</p>
+              <p>Number of available books: {{ $book->in_stock - $borrowCount }}</p>
             </span>
             @auth
             @if (!Auth::user()->is_librarian)

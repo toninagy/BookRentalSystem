@@ -43,6 +43,7 @@ class BooksController extends Controller
 
     public function details(Book $book) {
         $genre = Genre::where('id','=',$book->genres)->get();
+        $borrowCount = Borrow::where('book_id','=',$book->id)->get()->count();
         if(Auth::user()) {
             $is_borrowed = Borrow::where('reader_id','=',Auth::user()->id)->where('book_id','=',$book->id)->get();
         }
@@ -52,6 +53,7 @@ class BooksController extends Controller
         return view('books.detail', [
             'book' => $book,
             'is_borrowed' => $is_borrowed,
+            'borrowCount' => $borrowCount,
             'genre' => $genre
         ]);
     }
