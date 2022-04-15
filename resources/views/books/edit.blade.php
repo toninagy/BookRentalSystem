@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
+<div style="padding: 40px; margin: auto; width: 700px;">
 <h2>Edit book</h2>
 <form action="/books/{{ $book['id'] }}" method="post">
 
@@ -105,8 +106,9 @@
 </div>
 <br>
 <div class="form-group">
-    <button type="submit" class="btn btn-primary">Update book</button>
+    <button type="submit" class="btn text-white" style="background-color: #f7c531">Update book</button>
 </div>
 
 </form>
+</div>
 @endsection

@@ -3,16 +3,18 @@
 @section('content')
       @auth
       @if (Auth::user()->is_librarian)
-      <a href="{{ route('books.edit', $book->id) }}"  class="btn btn-primary">Edit book details</a>
+      <div class="mt-5">
+      <a href="{{ route('books.edit', $book->id) }}"  class="btn text-white" style="background-color: #f7c531">Edit book details</a>
       <form action="{{ route('books.destroy', $book->id) }}" method="POST" class="d-inline">
         @method('DELETE')
         @csrf
         <button type="submit" class="btn btn-danger">Delete book</button>
       </form>
+      </div>
       @endif
       @endauth
-      <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action" style="background-color: #4aa786">
+      <div class="list-group mt-5" style="background-color: #f7ebc6; border-radius: 10px; border: 2px solid #f7c531; padding: 20px; box-shadow: 5px 10px 8px #888888;">
+        <div class="text-white" style="border-bottom: 2px solid #f7c531; background-color: #f7c531; padding: 10px; border-radius: 10px;">
           <p class="d-flex justify-content-between align-items-center">
             <span>
                 <h2>Title: {{ $book->title }}</h2>
@@ -21,9 +23,8 @@
                 <h4>Genre(s): {{ $genre[0]->name }}</h4>
             </span>
           </p>
-        </a>
-
-        <a href="#" class="list-group-item list-group-item-action" style="background-color: #ab7969">
+        </div>
+        <div>
           <p class="d-flex justify-content-between align-items-center">
             <span>
               <p>Description: {{ $book->description }}</p>
@@ -46,6 +47,7 @@
             <input type="hidden" name="deadline" value={{$is_borrowed[0]->deadline}}>
             <input type="hidden" name="returned_at" value={{$is_borrowed[0]->returned_at}}>
             <input type="hidden" name="return_managed_by" value={{$is_borrowed[0]->return_managed_by}}>
+            </form>
             @else
             <form action="/books/{{ $book['id'] }}/borrow" method="post">
             @endif
@@ -54,7 +56,7 @@
             <input type="hidden" name="book_id" value="{{$book->id}}">
             <input type="hidden" name="status" value="PENDING">
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Borrow this book!</button>
+                <button type="submit" class="btn text-white" style="background-color: #f7c531">Borrow this book!</button>
             </div>
             </form>
             @else
@@ -71,7 +73,7 @@
             @endif
             @endauth
           </p>
-        </a>
+        </div>
         <img src="{{ $book->cover_image }}"/>
       </div>
 @endsection

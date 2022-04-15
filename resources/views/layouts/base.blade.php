@@ -10,23 +10,23 @@
 
     <title>Online Book Rental System</title>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="{{ route('index') }}">OBRS</a>
+  <body style="background-color: #f7f7f5">
+    <nav class="navbar navbar-expand-lg" style="background-color: #f7c531; padding: 10px;">
+      <a class="navbar-brand text-white" href="{{ route('index') }}">OBRS</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" href="{{ route('books.index') }}" >Books</a>
+          <a class="nav-item nav-link text-white" href="{{ route('books.index') }}" >Books</a>
           @auth
           @if (Auth::user()->is_librarian)
-          <a class="nav-item nav-link" href="{{ route('books.create') }}" >Add new book</a>
-          <a class="nav-item nav-link" href="{{ route('genres.list') }}" >Genre list</a>
-          <a class="nav-item nav-link" href="{{ route('borrows.list') }}" >Rental list</a>
+          <a class="nav-item nav-link text-white" href="{{ route('books.create') }}" >Add new book</a>
+          <a class="nav-item nav-link text-white" href="{{ route('genres.list') }}" >Genre list</a>
+          <a class="nav-item nav-link text-white" href="{{ route('borrows.list') }}" >Rental list</a>
           @endif
           @if (!Auth::user()->is_librarian)
-          <a class="nav-item nav-link" href="{{ route('borrows.list') }}" >My rentals</a>
+          <a class="nav-item nav-link text-white" href="{{ route('borrows.list') }}" >My rentals</a>
           @endif
           @endauth
         </div>
@@ -34,23 +34,23 @@
         <ul class="navbar-nav ms-auto">
         <!-- Authentication Links -->
         @auth
-          <a class="nav-item nav-link" href="{{ route('profile') }}" >My profile</a>
+          <a class="nav-item nav-link text-white" href="{{ route('profile') }}" >My profile</a>
         @endauth
         @guest
             @if (Route::has('login'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
             @endif
 
             @if (Route::has('register'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
                 </li>
             @endif
         @else
             <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a id="navbarDropdown" class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }}
                 </a>
 

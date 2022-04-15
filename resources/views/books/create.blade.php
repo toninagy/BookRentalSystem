@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
+<div style="padding: 40px; margin: auto; width: 700px;">
 <h2>New book</h2>
 <form action="{{ route('books.store') }}" method="post">
 
@@ -109,8 +110,9 @@
 </div>
 <br>
 <div class="form-group">
-    <button type="submit" class="btn btn-primary">Add new book</button>
+    <button type="submit" class="btn text-white" style="background-color: #f7c531">Add new book</button>
 </div>
 
 </form>
+<div>
 @endsection

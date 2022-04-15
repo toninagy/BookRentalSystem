@@ -23,9 +23,11 @@ class BooksController extends Controller
     public function show(Book $book)
     {
         $genre = Genre::where('id','=',$book->genres)->get();
+        $borrowCount = Borrow::where('book_id','=',$book->id)->get()->count();
         return view('books.detail', [
             'book' => $book,
-            'genre' => $genre
+            'genre' => $genre,
+            'borrowCount' => $borrowCount
         ]);
     }
 

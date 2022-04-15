@@ -1,8 +1,8 @@
 @extends('layouts.base')
 
 @section('content')
-<div class="container">
-    <a href="{{ route('genres.create') }}" class="btn btn-primary" style="background-color: green">Add new genre</a>
+<div class="container mt-5">
+    <a href="{{ route('genres.create') }}" class="btn text-white" style="background-color: #f7c531">Add new genre</a>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -15,7 +15,7 @@
             <tr>
               <td>{{ $genre->name }}</td>
               <td>{{ $genre->style }}</td>
-              <td><a href="{{ route('genres.edit', $genre['id']) }}" class="btn btn-primary" style="background-color: green">Edit genre</a>
+              <td><a href="{{ route('genres.edit', $genre['id']) }}" class="btn text-white" style="background-color: #f7c531">Edit genre</a>
               @auth
               @if (Auth::user()->is_librarian)
                 <form action="{{ route('genres.destroy', $genre['id']) }}" method="POST" class="d-inline">

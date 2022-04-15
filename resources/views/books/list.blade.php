@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     @if(isset($details))
         <p> Search results for "<b> {{ $query }} </b>" :</p>
     <table class="table table-striped">
@@ -26,7 +26,7 @@
               @else
               <td style="color: red">No</td>
               @endif
-              <td><a href="{{ route('books.details', $book['id']) }}" class="btn btn-primary" style="background-color: green">Book details</a>
+              <td><a href="{{ route('books.details', $book['id']) }}" class="btn text-white" style="background-color: #f7c531">Book details</a>
               </td>
             </tr>
             @endforeach

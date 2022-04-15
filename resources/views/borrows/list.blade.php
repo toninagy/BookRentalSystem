@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <table class="table table-striped">
         <thead>
             Rental requests with pending status:
@@ -20,7 +20,7 @@
               <td>{{ $borrow->reader_id }}</td>
               @endif
               <td>{{ $borrow->book_id }}</td>
-              <td><a href="{{ route('borrows.edit', $borrow['id']) }}" class="btn btn-primary" style="background-color: green">Rental details</a>
+              <td><a href="{{ route('borrows.edit', $borrow['id']) }}" class="btn text-white" style="background-color: #f7c531">Rental details</a>
             </tr>
             @endif
             @endforeach
@@ -45,7 +45,7 @@
               <td>{{ $borrow->reader_id }}</td>
               @endif
               <td>{{ $borrow->book_id }}</td>
-              <td><a href="{{ route('borrows.edit', $borrow['id']) }}" class="btn btn-primary" style="background-color: green">Rental details</a>
+              <td><a href="{{ route('borrows.edit', $borrow['id']) }}" class="btn text-white" style="background-color: #f7c531">Rental details</a>
             </tr>
             @endif
             @endforeach
@@ -70,7 +70,7 @@
               <td>{{ $borrow->reader_id }}</td>
               @endif
               <td>{{ $borrow->book_id }}</td>
-              <td><a href="{{ route('borrows.edit', $borrow['id']) }}" class="btn btn-primary" style="background-color: green">Rental details</a>
+              <td><a href="{{ route('borrows.edit', $borrow['id']) }}" class="btn text-white" style="background-color: #f7c531">Rental details</a>
             </tr>
             @endif
             @endforeach
@@ -94,7 +94,7 @@
               <td>{{ $borrow->reader_id }}</td>
               @endif
               <td>{{ $borrow->book_id }}</td>
-              <td><a href="{{ route('borrows.edit', $borrow['id']) }}" class="btn btn-primary" style="background-color: green">Rental details</a>
+              <td><a href="{{ route('borrows.edit', $borrow['id']) }}" class="btn text-white" style="background-color: #f7c531">Rental details</a>
             </tr>
             @endif
             @endforeach
@@ -118,7 +118,7 @@
               <td>{{ $borrow->reader_id }}</td>
               @endif
               <td>{{ $borrow->book_id }}</td>
-              <td><a href="{{ route('borrows.edit', $borrow['id']) }}" class="btn btn-primary" style="background-color: green">Rental details</a>
+              <td><a href="{{ route('borrows.edit', $borrow['id']) }}" class="btn text-white" style="background-color: #f7c531">Rental details</a>
             </tr>
             @endif
             @endforeach

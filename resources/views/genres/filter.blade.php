@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -18,7 +18,7 @@
               <td>{{ $book->authors }}</td>
               <td>{{ substr($book->released_at, 0, 10) }}</td>
               <td>{{ $book->description }}</td>
-              <td><a href="{{ route('books.details', $book['id']) }}" class="btn btn-primary" style="background-color: green">Book details</a>
+              <td><a href="{{ route('books.details', $book['id']) }}" class="btn text-white" style="background-color: #f7c531">Book details</a>
             </tr>
             @endforeach
         </tbody>
